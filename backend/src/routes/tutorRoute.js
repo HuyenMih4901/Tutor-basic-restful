@@ -5,5 +5,7 @@ const TutorController = require("../controllers/tutorController");
 router.get('/', function(req, res, next) {
     res.render('userview');
 });
-router.post("#", TutorController.createRegis);
+router.post("/create", TutorController.createRegis);
+router.get('/:id',TutorController.getTutor);
+
 module.exports = router;

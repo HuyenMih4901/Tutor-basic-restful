@@ -2,21 +2,20 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const TutorSchema = new Schema({
-    _id: false,
-    id: {
-        type: String,
-        unique: true,
-        index: true,
-        sparse:true,
-        required: true
-    },
+    // _id: true,
+    // id: {
+    //     type: String,
+    //     unique: true,
+    //     index: true,
+    //     sparse:true,
+    // },
     firstname: {
         type: String,
     },
-    name: {
+    lastname: {
         type: String,
     },
-    sdt: {
+    phone: {
         type: String,
     },
     email: {
@@ -25,7 +24,7 @@ const TutorSchema = new Schema({
     school: {
         type: String,
     },
-    level: {
+    degree: {
         type: String,
     },
     subject: {
