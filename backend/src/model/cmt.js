@@ -10,16 +10,7 @@ const CmtSchema = new Schema({
         sparse:true,
         required: true
     },
-    name: {
-        type: String,
-    },
-    time: {
-        type: String,
-    },
-    add: {
-        type: String,
-    },
-    des: {
+    cmt: {
         type: String,
     },
 })

@@ -4,5 +4,5 @@ const cmtController = require("../controllers/cmtController");
 
 router.get("/", cmtController.getAllCmt);
 router.post("/:id", cmtController.createCmt);
-// router.put( "/:id", cmtController.updateCmtByID);
+router.put( "/:id", cmtController.updateCmtByID);
 module.exports = router;

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VietTut-Danh sách lớp mới</title>
+    <title>VietTut- Chi tiết lớp</title>
     <link rel="stylesheet" href="../css/class.css">
     <link rel="stylesheet" href="../js/jquey.min.js">
     <script src="../asset/fontawesome/all.min.js"></script>
@@ -59,27 +59,8 @@
             </div>
         </nav>
     </header>
-    <section class="container">
-        <div class="row mt-lg-3">
-            <div class="col-lg-5">
-                <div>
-                    <div role="search">
-                        <input type="text" class="search-input" placeholder="Tìm kiếm lớp gia sư ..." style="width: 250px;">
-                        <button class="search-btn">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            Tìm kiếm
-                        </button>
-                    </div>
-                    <div id = "search"></div>
-                </div>
-            </div>
-        </div>
-        <h5 class="text-primary">Danh sách lớp mới</h5>
-        <div class="row mt-3 pt-3 myclass-for-tutor-field">
-            <div class="col-lg-3 " id="class-list">
-                <div class="myclass-item text-small"id = "myclass-item-text"></div>
-            </div>
-        </div>            
+    <section class="container" id = "classdetail">
+               
     </section>
 
     <footer id="footer">
@@ -138,9 +119,95 @@
         </div>
     </footer>
     <script>
-        getData();
-        const searchBtn = document.querySelector(".search-btn");
-        searchBtn.addEventListener('click', search);
+        const searchParams = window.location.search;
+        const params = new URLSearchParams(searchParams);
+        const id = params.get("id");
+        if(!id){
+            window.location.pathname = "/404.html";
+        }
+
+        fetch(
+        `http://localhost:8080/api/classdetail/${id}`,
+        {
+            method: 'GET',
+            headers: {
+                'Content-type': 'json/application'
+            }
+        }
+    )
+        .then(res => {
+            return res.json();
+        })
+        .then(data => {
+            console.log("data:", data);
+            const classdetail = document.querySelector("#classdetail");
+            classdetail.innerHTML = `
+                <h5 class="text-primary" >Chi tiết lớp ${data.id}</h5>
+                <div class="row  myclass-for-tutor-field">
+                    <div id="class-list">
+                            <div class="myclass-item text-small" id = "myclass-item-text">
+                                <div class="myclass-item-head" style = "display: block!important">
+                                    <h3>${data.name}</h3>
+                                    <p class="p-icon mb-2">
+                                        <b>Tình trạng: </b> ${data.status}
+                                    </p>
+                                </div>
+                                <div class="myclass-item-body">
+                                    <p class="p-icon mb-2">
+                                        -
+                                        <b>Địa chỉ: </b>${data.add}
+                                    </p>
+                                    <p class="p-icon mb-2">
+                                        -
+                                        <b>Học phí: </b>
+                                        ${data.price}
+                                    </p>
+                                    <p class="p-icon mb-2">
+                                        -
+                                        <b>Yêu cầu: </b>
+                                        ${data.des}
+                                    </p>
+                                    <p class="p-icon mb-2">
+                                        -
+                                        <b>Thời gian: </b>
+                                        ${data.time}
+                                    </p>
+                                    <h3> Đặc điểm học sinh:</h3>
+                                    <p class="p-icon mb-2">
+                                        -
+                                        <b>Giới tính: </b>
+                                        ${data.sex}
+                                    </p>
+                                    <p class="p-icon mb-2">
+                                        -
+                                        <b>Học lực: </b>
+                                        ${data.level}
+                                    </p>
+                                    <p class="p-icon mb-2">
+                                        -
+                                        <b>Môn cần dạy: </b>
+                                        ${data.subject}
+                                    </p>
+                                    <p class="p-icon mb-2">
+                                        -
+                                        <b> Phí nhận lớp: </b>
+                                        ${data.cost}
+                                    </p>
+                                    <div class="text-right mt-3">
+                                        <a href="resinfo.html" class="btn btn-success"
+                                            rel="nofollow">Đăng kí nhận lớp</a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>   
+            `;
+        })
+        .catch(err => {
+            console.log("err: ", err);
+        })
     </script>
 </body>
 

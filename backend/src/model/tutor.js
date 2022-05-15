@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
-const ClassSchema = new Schema({
+const TutorSchema = new Schema({
     _id: false,
     id: {
         type: String,
@@ -10,21 +10,27 @@ const ClassSchema = new Schema({
         sparse:true,
         required: true
     },
+    firstname: {
+        type: String,
+    },
     name: {
         type: String,
     },
-    price: {
+    sdt: {
         type: String,
     },
-    time: {
+    email: {
         type: String,
     },
-    add: {
+    school: {
         type: String,
     },
-    des: {
+    level: {
         type: String,
-    }
+    },
+    subject: {
+        type: String,
+    },
 })
 
-module.exports = mongoose.model('Class', ClassSchema)
+module.exports = mongoose.model('Tutor', TutorSchema)

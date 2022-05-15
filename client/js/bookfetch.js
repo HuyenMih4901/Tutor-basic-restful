@@ -1,4 +1,4 @@
-let deleBook;
+// let deleBook;
 function getData() {
     fetch(
         "http://localhost:8080/api/book",
@@ -14,11 +14,9 @@ function getData() {
         })
         .then(data => {
             const book = document.querySelector("#book");
-            let books = [];
-            books = data.map(item => {
-                const handleDelete = () =>{
-                    delBook(item.id)
-                }
+            // let books = [];
+            
+            let books = data.map(item => {
                 return `
                         <div class="file-item-text">
                             <h2 class="file-item-title">${item.id}</h2>
@@ -27,12 +25,13 @@ function getData() {
                                 <p class="mt-1"><b>Môn học:</b> ${item.subject}</p>
                                 <p class="mt-1"><b>Cấp học:</b> ${item.level}</p>
                                 <button class = "view btn">Xem tài liệu</button>
-                                <button class = "edit btn">Sửa tài liệu</button>
-                                <button class = "del btn" onclick={${handleDelete}}>Xóa tài liệu</button>
+                                <button class = "del btn" onclick="delBook('${item.id}')">Xóa tài liệu</button>
                             </div>
                         </div>
             `;
+
             });
+
             book.innerHTML = books.join('');
 
         })
@@ -40,27 +39,26 @@ function getData() {
             console.log("err: ", err);
         })
 }
-
+// const handleDelete = (id) =>{
+//     console.log((id));
+// }
+getData();
 function delBook(id) {
-    // const delBook = document.querySelectorAll(".del");
-
-    // console.log(delBook);
-    // deleBook.addEventListener('click', function(event) {
-    //     event.preventDefault();
-    //     console.log(event.target);
-    // });
+    let result = confirm("Want to delete?");
+    if(result){
     
-    fetch(`http://localhost:8080/api/book/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-type': 'json/application'
-        }
-    })
-        .then(res => res.json())
-        .then(data => {
-            // Do some stuff...
-            alert("Delete success")
+        fetch(`http://localhost:8080/api/book/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'json/application'
+            }
         })
-        .catch(err => console.log(err));
+            .then(res => res.json())
+            .then(data => {
+                // Do some stuff...
+                getData()
+            })
+            .catch(err => console.log(err));
+    }
+    
 }
-delBook();

@@ -10,12 +10,12 @@ module.exports = {
         const book = await Book.findOneAndDelete({id: req.params.id});
         res.json("OK!");
     },
-    updateProductByID: async (res, req, next) => {
-        const book = await Book.findByIdAndUpdate(
-            res.params.id,
-            res.body,
-            { new : true }
-            );
-        req.json(book);
-    }
+    // updateProductByID: async (res, req, next) => {
+    //     const book = await Book.findByIdAndUpdate(
+    //         res.params.id,
+    //         res.body,
+    //         { new : true }
+    //         );
+    //     req.json(book);
+    // }
 }

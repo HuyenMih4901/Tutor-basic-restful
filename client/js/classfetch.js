@@ -1,6 +1,6 @@
 function getData() {
     fetch(
-        "http://localhost:8080/api/classlist",
+        "http://localhost:8080/api/classdetail",
         {
             method: 'GET',
             headers: {
@@ -45,8 +45,7 @@ function getData() {
                                 ${item.des}
                             </p>
                             <div class="text-right mt-3">
-                                <a href="" class="btn btn-success"
-                                    rel="nofollow">Xem chi tiết</a>
+                                <a href="classdetail.html?id=${item.id}" class="btn btn-success">Xem chi tiết</a>
                             </div>
                         </div>
                     </div>
@@ -64,7 +63,7 @@ function search(e) {
     const input = document.querySelector(".search-input").value;
     console.log("input: ", input);
     fetch(
-        `http://localhost:8080/api/classlist/${input}`,
+        `http://localhost:8080/api/classdetail/${input}`,
         {
             method: "GET",
             headers: {
