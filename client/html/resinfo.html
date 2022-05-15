@@ -20,9 +20,9 @@
             <div class="my-navbar d-flex flex-row align-items-center" id="my_navbar">
                 <a href="/" title="Home" class="d-flex align-items-center">
                     <span class="logo-text">
-                            <span class="logo-text-grow">Viet</span><span class="logo-text-green">Tut</span>
+                        <span class="logo-text-grow">Viet</span><span class="logo-text-green">Tut</span>
                     </span>
-                </a>        
+                </a>
             </div>
         </div>
 
@@ -30,7 +30,8 @@
             <div class="menu-nav-inner">
                 <ul class="list-unstyled menu-nav-secondary">
                     <li class="nav-item">
-                        <a href="user.html" class="btn btn-sm btn-nv-tutor font-weight-bold" target="_blank" style="background-color:transparent;color: white; border: 1px white solid">Nguyen Van A</a>
+                        <a href="user.html" class="btn btn-sm btn-nv-tutor font-weight-bold" target="_blank"
+                            style="background-color:transparent;color: white; border: 1px white solid">Nguyen Van A</a>
                     </li>
                 </ul>
 
@@ -39,16 +40,17 @@
                         <a class="nav-link" href="index.html"><span>Trang chủ</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="class.html" ><span>Danh sách lớp mới</span></a>
+                        <a class="nav-link" href="class.html"><span>Danh sách lớp mới</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="register.html" style="background-color: #f1f1f1; color: #0071bc;"><span>Đăng ký nhận lớp</span></a>
+                        <a class="nav-link" href="register.html"
+                            style="background-color: #f1f1f1; color: #0071bc;"><span>Đăng ký nhận lớp</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="book.html"><span>Quản lý tài liệu</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="section.html"><span>Đánh giá buổi học</span></a>
+                        <a class="nav-link" href=""><span>Đánh giá buổi học</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href=""><span>Quản lý lớp học</span></a>
@@ -62,57 +64,57 @@
         </nav>
     </header>
     <section class="container register">
-        <form class="register-form" method="post" action="http">
+        <form class="register-form" method="post" onsubmit="handleSubmit(event)">
             <div class="title-area">
-              Điền thông tin cá nhân của bạn
+                Điền thông tin cá nhân của bạn
             </div>
             <div class="form-control-area">
-              <div class="form-group">
-                <label for="first-name">Họ</label>
-                <input type="text" class="form-control btn" required />
-              </div>
-              <div class="form-group">
-                <label for="last-name">Tên</label>
-                <input type="text" class="form-control btn" required />
-              </div>
-              <div class="form-group">
-                <label for="phone">Số điện thoại</label>
-                <input type="tel" class="form-control btn" required />
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control btn" name="email" required />
-              </div>
-              <div class="form-group">
-                <label >Trường</label>
-                <input type="text" class="form-control btn" name="email" required />
-              </div>
-              <div class="form-group">
-                <label >Bằng cấp</label>
-                <input type="text" class="form-control btn" name="email" required />
-              </div>
-              
+                <div class="form-group">
+                    <label for="first-name">Họ</label>
+                    <input type="text" class="form-control btn" id="firstname" required />
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Tên</label>
+                    <input type="text" class="form-control btn" id="lastname" required />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Số điện thoại</label>
+                    <input type="tel" class="form-control btn" id="phone" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control btn" name="email" id="email" required />
+                </div>
+                <div class="form-group">
+                    <label for="school">Trường</label>
+                    <input type="text" class="form-control btn" id="school" required />
+                </div>
+                <div class="form-group">
+                    <label for="degree">Bằng cấp</label>
+                    <input type="text" class="form-control btn" id="degree" required />
+                </div>
+
             </div>
             <div class="form-check-area">
-              <div class="form-check">
                 <label><b>Chuyên môn</b></label><br>
-                <input type="checkbox" class="form-check-input bounce" />
-                <label class="form-check-label">Môn tự nhiên</label>
-              </div>
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input bounce" />
-                <label class="form-check-label">Môn xã hội</label>
-              </div>
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input bounce" />
-                <label class="form-check-label">Ngoại Ngữ</label>
-              </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input bounce" />
+                    <label class="form-check-label">Môn tự nhiên</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input bounce" />
+                    <label class="form-check-label">Môn xã hội</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input bounce" />
+                    <label class="form-check-label">Ngoại Ngữ</label>
+                </div>
             </div>
             <div class="form-submit-area">
-              <button type="submit" class="btn btn-success">Đăng ký nhận lớp</button>
+               <button type="submit" class="btn btn-success">Đăng ký nhận lớp</button>
             </div>
-          </form>
-        
+        </form>
+
     </section>
 
     <footer id="footer">
@@ -124,7 +126,8 @@
                         <div class="contact-title h5 mb-3">Liên hệ với chúng tôi</div>
                         <div class="my-contact my-mt-1">
                             <p><span><i class="fa-solid fa-location-dot"></i></span>Hà Nội</p>
-                            <p><span><i class="fa-solid fa-phone"></i></span> <a href="tel:+2222288"  style=" color: #333; font-weight: 400;">2222288</a></p>
+                            <p><span><i class="fa-solid fa-phone"></i></span> <a href="tel:+2222288"
+                                    style=" color: #333; font-weight: 400;">2222288</a></p>
                             <p><span><i class="fa-solid fa-envelope"></i></span> contact@viettut.edu.vn</p>
                         </div>
                     </div>
@@ -132,9 +135,11 @@
                     <div class="connect-us col-lg-3 mt-3 mt-lg-0" style="margin-right: 80px">
                         <div class="contact-title h5 mb-3">Về VietTut</div>
                         <ul class="list-unstyled">
-                            <li class="mb-1"><a href="/gioi-thieu"  style=" color: #333; font-weight: 400;">Giới thiệu</a></li>
-                            <li class="mb-1"><a href="/lien-he"  style=" color: #333; font-weight: 400;">Liên hệ</a></li>
-                            <li class="mb-1"><a href="/privacy-policy"  style=" color: #333; font-weight: 400;">Chính sách bảo mật</a></li>
+                            <li class="mb-1"><a href="/gioi-thieu" style=" color: #333; font-weight: 400;">Giới
+                                    thiệu</a></li>
+                            <li class="mb-1"><a href="/lien-he" style=" color: #333; font-weight: 400;">Liên hệ</a></li>
+                            <li class="mb-1"><a href="/privacy-policy" style=" color: #333; font-weight: 400;">Chính
+                                    sách bảo mật</a></li>
 
                         </ul>
                     </div>
@@ -170,6 +175,45 @@
             </div>
         </div>
     </footer>
+    <!-- <script src="../js/register.js"></script> -->
+    <script>
+        const handleSubmit = (e) => {
+            e.preventDefault();
+            const firstname = document.getElementById("firstname").value;
+            const lastname = document.getElementById("lastname").value;
+            const school = document.getElementById("school").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const degree = document.getElementById("degree").value;
+            const formCheck = document.querySelectorAll(".form-check");
+            let subject ;
+            formCheck.forEach((e) =>{
+                if(e.firstElementChild.checked === true){
+                    subject = e.firstElementChild.nextElementSibling.textContent
+                }
+            })
+            const body = {firstname, lastname, school, email, phone, degree, subject}
+            console.log(body);
+            fetch(
+                `http://127.0.0.1:8080/api/register/create`,
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-type': 'application/json',
+
+                    },
+                    body: JSON.stringify(body)
+                }
+            )
+            .then(res => {
+                console.log(res.json());
+                alert("Gửi form thành công");
+                window.location.href = 'register.html'
+                
+            })
+
+        }
+    </script>
 </body>
 
 </html>

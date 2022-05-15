@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VietTut-Đánh giá buổi học</title>
-    <link rel="stylesheet" href="../css/section.css">
+    <title>VietTut-Quản lý thông tin cá nhân</title>
+    <link rel="stylesheet" href="../css/user.css">
     <link rel="stylesheet" href="../js/jquey.min.js">
     <script src="../asset/fontawesome/all.min.js"></script>
 </head>
@@ -25,6 +25,11 @@
 
         <nav class="menu-nav" id="menu_nav">
             <div class="menu-nav-inner">
+                <ul class="list-unstyled menu-nav-secondary">
+                    <li class="nav-item">
+                        <a href="user.html" class="btn btn-sm btn-nv-tutor font-weight-bold" target="_blank" style="background-color:transparent;color: white; border: 1px white solid">Nguyen Van A</a>
+                    </li>
+                </ul>
 
                 <ul class="menu-nav-primary dropdown-group">
                     <li class="nav-item">
@@ -40,8 +45,7 @@
                         <a class="nav-link" href="book.html"><span>Quản lý tài liệu</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" style="background-color: #f1f1f1; color: #0071bc;"><span>Đánh giá
-                                buổi học</span></a>
+                        <a class="nav-link" href="" ><span>Đánh giá buổi học</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href=""><span>Quản lý lớp học</span></a>
@@ -56,69 +60,12 @@
     </header>
 
     <section class="container">
-        <h5 class="text-primary" style="margin-block: 30px;">Chưa đánh giá</h5>
-        <div class="row mt-3 pt-3 myclass-for-tutor-field">
-            <div class="col-lg-6" id="new-cmt">
-                
+        <h5 class="text-primary">Thông tin cá nhân</h5>
+        <div class="row mt-3 pt-3 tutor-field">
+            <div class="col-lg-3 " >
+                <div class="tutor-item text-small" id = "user-item"></div>
             </div>
-        </div>
-
-        <h5 class="text-primary" style="margin-block: 30px;">Đã đánh giá</h5>
-        <div class="row mt-3 pt-3 myclass-for-tutor-field">
-            <div class="col-lg-3 cmt-block" id="cmt">
-                <div class="myclass-item text-small" id="myclass-item-text">
-                    <input class="p-icon mb-2 cmt" id = "editcmt" readonly = "true"></input>
-                    <div class="myclass-item-head d-flex">
-                        <a href="" class="mr-auto" rel="nofollow">
-                            <span class="font-weight-bold">HH-07</span>
-                        </a>
-                    </div>
-                    <div class="myclass-item-body">
-                            <p class="p-icon mb-2">
-                                <i class="fa-solid fa-book"></i>
-                                <b>Hóa học lớp 7</b>
-                            </p>
-                            <p class="p-icon mb-2">
-                                - 
-                               19:30-21:30
-                            </p>
-                            <p class="p-icon mb-2">
-                                -
-                                Số 99 Láng Thượng, Đống Đa, Hà Nội
-                            </p>
-                    </div>
-                    <div class="text-right mt-3">
-                        <button onclick = "editcmt()" class="btn btn-success">Sửa đánh giá</button>
-                    </div>
-                </div>
-
-                <div class="myclass-item text-small" id="myclass-item-text">
-                    <input class="p-icon mb-2 cmt" id = "editcmt" readonly = "true"></input>
-                    <div class="myclass-item-head d-flex">
-                        <a href="" class="mr-auto" rel="nofollow">
-                            <span class="font-weight-bold">LS-05</span>
-                        </a>
-                    </div>
-                    <div class="myclass-item-body">
-                            <p class="p-icon mb-2">
-                                <i class="fa-solid fa-book"></i>
-                                <b>Lịch sử lớp 5</b>
-                            </p>
-                            <p class="p-icon mb-2">
-                                - 
-                               19:30-21:00
-                            </p>
-                            <p class="p-icon mb-2">
-                                -
-                                Ngõ 4, Nguyễn Chí Thanh, Cầu Giấy, Hà Nội
-                            </p>
-                    </div>
-                    <div class="text-right mt-3">
-                        <button onclick = "editcmt()" class="btn btn-success">Sửa đánh giá</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>     
     </section>
     <footer id="footer">
         <div class="footer-primary-section pt-4 pb-3">
@@ -178,7 +125,50 @@
             </div>
         </div>
     </footer>
-    <script src = "../js/cmtfetch.js"></script>
+    
+    <script>
+        fetch(
+        "http://localhost:8080/api/user",
+        {
+            method: 'GET',
+            headers: {
+                'Content-type': 'json/application'
+            }
+        }
+    )
+        .then(res => {
+            return res.json();
+        })
+        .then(data => {
+            console.log("data:", data);
+            const tutors = document.querySelector("#user-item"); 
+
+            let tutor = data.map(item => {
+                return `
+                    <div class="myclass-item text-small" id = "myclass-item-text">
+                        <div class="myclass-item-head d-flex">
+                            <a href="edituser.html?id=${item.id}" class="mr-auto" rel="nofollow">
+                                <span class="font-weight-bold">${item.name}</span>
+                            </a>
+                        </div>
+                        <div class="myclass-item-body">
+                            <p class="p-icon mb-2">
+                                <b>- Họ tên: </b>
+                                ${item.phone}
+                            </p>
+                            <p class="p-icon mb-2">
+                                <b>- Số điện thoại: </b>
+                                ${item.gender}
+                            </p>
+                        </div>
+                    </div>
+            `});
+            tutors.innerHTML = tutor.join('');
+        })
+        .catch(err => {
+            console.log("err: ", err);
+        })
+    </script>
 </body>
 
 </html>

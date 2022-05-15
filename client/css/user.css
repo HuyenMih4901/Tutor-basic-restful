@@ -230,27 +230,7 @@ body {
     float: left;
     width: calc(100% - 7rem);
 }
-.search-btn{
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    overflow: visible;
-    text-transform: none;
-    -webkit-appearance: button;
-    background: #00a63f;
-    border: 0;
-    border-radius: 5px;
-    color: #fff;
-    display: inline-block;
-    text-align: center;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    height: 38px;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-    width: 7rem;
-}
+
 .col-lg-3{
     position: relative;
     width: 100%;
@@ -262,13 +242,32 @@ body {
     display: flex;
 }
 
-#myclass-item-text{
+.tutor-item{
     position: relative;
     margin-bottom: 2rem;
     border-radius: 3px;
     font-size: .95rem;
     margin-right: 90px;
     /* height: 150px; */
+}
+.myclass-item-head{
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    font-size: .95rem;
+    box-sizing: border-box;
+    display: flex!important;
+    padding: .5rem 1rem;
+    background: #0071bc;
+    border: 1px solid #0071bc;
+    color: #fff;
+}
+.btn-success{
+    background-color: #28a745;
+    color: white;
+}
+.btn-success:hover{
+    background-color:darkgreen;
 }
 a{
     font-weight: 700;
@@ -287,6 +286,7 @@ a{
     padding: 10px;
     height: 100px;
     border: 1px #ccc solid;
+    margin-bottom: 10px;
 }
 #editcmt{
     margin-bottom: 10px;
